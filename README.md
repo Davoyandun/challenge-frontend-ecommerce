@@ -1,3 +1,4 @@
+[![CI](https://github.com/Davoyandun/challenge-frontend-ecommerce/actions/workflows/CI.yml/badge.svg)](https://github.com/Davoyandun/challenge-frontend-ecommerce/actions/workflows/CI.yml)
 # Store App - Module 1 Test
 
 This is the application to test the knowledge gained in the first module of the ioet university 2.0.
