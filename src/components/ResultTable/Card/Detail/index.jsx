@@ -1,14 +1,21 @@
-import { Rating } from "../../../Filter/RatingFilter/Rating"
-import './Detail.css'
+import { Rating } from "../../../Filter/RatingFilter/Rating";
+import PropTypes from "prop-types";
+import "./Detail.css";
 
-function Detail ({title, price }) {
+function Detail({ title, price, rating }) {
     return (
         <div className="DetailsCardContainer">
             <h3>{title}</h3>
-            <Rating stars={3}/>
+            <Rating stars={rating} />
             <h3>${price}</h3>
         </div>
-    )
+    );
 }
 
-export { Detail }
+Detail.propTypes = {
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+};
+
+export { Detail };

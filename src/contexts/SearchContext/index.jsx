@@ -3,7 +3,7 @@ import { useState, useEffect, createContext } from "react";
 const SearchContext = createContext();
 
 function SearchProvider({ children }) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
@@ -11,11 +11,12 @@ function SearchProvider({ children }) {
   const [titleProduct, setTitleProduct] = useState("");
   const [priceProduct, setPriceProduct] = useState("");
   const [descriptionProduct, setDescriptionProduct] = useState("");
+  const [ratingProduct, setRatingProduct] = useState(0);
 
   const getData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
     const data = await response.json();
-    return data
+    return data;
   };
 
   useEffect(() => {
@@ -53,7 +54,9 @@ function SearchProvider({ children }) {
         priceProduct,
         setPriceProduct,
         descriptionProduct,
-        setDescriptionProduct
+        setDescriptionProduct,
+        ratingProduct,
+        setRatingProduct,
       }}
     >
       {children}
