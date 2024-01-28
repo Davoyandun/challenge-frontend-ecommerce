@@ -24,8 +24,9 @@ function Modal() {
           <AiOutlineCloseCircle
             className="closeModal"
             onClick={setCloseModal}
+            data-testid="close-modal-svg"
           />
-          <img src={imageProduct} />
+          <img src={imageProduct} alt="product not found" />
         </div>
         <div className="DetailsModalContainer">
           <div className="HeaderDetailModalContainer">

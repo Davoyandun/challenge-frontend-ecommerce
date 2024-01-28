@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
 import { Modal } from "../../../src/components/Modal";
 
 jest.mock("react", () => ({
@@ -22,18 +22,18 @@ describe("Modal component", () => {
   });
 
   it("Should renders modal content correctly", () => {
-    const { getByText, getByAltText } = render(<Modal />);
+    render(<Modal />);
 
-    expect(getByText("mockTitle")).toBeInTheDocument();
-    expect(getByText("$10.99")).toBeInTheDocument();
-    expect(getByText("mockDescription")).toBeInTheDocument();
-    expect(getByText("Add")).toBeInTheDocument();
+    expect(screen.getByText("mockTitle")).toBeInTheDocument();
+    expect(screen.getByText("$10.99")).toBeInTheDocument();
+    expect(screen.getByText("mockDescription")).toBeInTheDocument();
+    expect(screen.getByText("Add")).toBeInTheDocument();
   });
 
   it("Should calls setIsOpen when close button is clicked", () => {
-    const { baseElement } = render(<Modal />);
+    render(<Modal />);
 
-    const closeButton = baseElement.querySelector(".closeModal");
+    const closeButton = screen.getByTestId("close-modal-svg");
 
     fireEvent.click(closeButton);
 

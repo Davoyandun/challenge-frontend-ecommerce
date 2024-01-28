@@ -7,10 +7,18 @@ function Rating({ stars }) {
   const fillStars = () => {
     const etiquetas = [];
     const starSelected = [...Array(stars)].map((_, index) => (
-      <AiFillStar className="StarFilled" key={index} />
+      <AiFillStar
+        className="StarFilled"
+        key={index}
+        data-testid="filled-stars"
+      />
     ));
     const starNotSelected = [...Array(5 - stars)].map((_, index) => (
-      <AiOutlineStar className="StarNotFilled" key={index} />
+      <AiOutlineStar
+        className="StarNotFilled"
+        key={index}
+        data-testid="unfilled-stars"
+      />
     ));
     etiquetas.push(starSelected);
     etiquetas.push(starNotSelected);
