@@ -59,8 +59,20 @@ jobs:
       needs: Get_Dependencies
 
       steps:
-         - uses: actions/checkout@v3
-         - uses: ArtiomTr/jest-coverage-report-action@v2
-           with:
-              test-script: npm test:ci
+         - name: Checkout
+           uses: actions/checkout@v3
 
+         - name: Installing Node.js
+           uses: actions/setup-node@v3
+           with:
+              node-version: 16.17.0
+              cache: "npm"
+
+         - name: Restoring dependencies
+           uses: actions/cache@v3
+           with:
+              path: node_modules
+              key: ci-${{runner.os}}-${{github.ref}}-${{hashFiles('**/package-lock.json')}}
+
+         - name: Running tests
+           run: npm run test:ci
