@@ -24,7 +24,7 @@ function Card({ image, title, price, description, rating }) {
   return (
     <div className="CardContainer" onClick={openModal}>
       <div className="ProductImageContainer">
-        <img src={image} />
+        <img src={image} alt="img not found" />
       </div>
       <Detail title={title} price={price} rating={rating} />
     </div>
