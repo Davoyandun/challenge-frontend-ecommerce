@@ -1,0 +1,30 @@
+name: "coverage"
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+jobs:
+  intall-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+  test:
+    runs-on: ubuntu-latest
+    needs: intall-dependencies
+    steps:
+      - name: Run tests
+        run: npm run test
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+  linte:
+    runs-on: ubuntu-latest
+    needs: intall-dependencies
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run linter
+        run: npm run lint
