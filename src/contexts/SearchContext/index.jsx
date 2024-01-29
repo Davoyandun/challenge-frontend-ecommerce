@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext } from "react";
+import { applySortByPrice } from "../../components/utils/intex";
 
 const SearchContext = createContext();
 
@@ -12,6 +13,7 @@ function SearchProvider({ children }) {
   const [priceProduct, setPriceProduct] = useState("");
   const [descriptionProduct, setDescriptionProduct] = useState("");
   const [ratingProduct, setRatingProduct] = useState(0);
+  const [sortByPrice, setSortByPrice] = useState("name");
 
   const getData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -32,6 +34,14 @@ function SearchProvider({ children }) {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (sortByPrice !== "name") {
+      const sortedProducts = applySortByPrice(products, sortByPrice);
+      setProducts(sortedProducts);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortByPrice]);
+  console.log(sortByPrice);
   const searchedProducts = products.filter((product) => {
     const productName = product.title.toLowerCase();
     const searchText = searchValue.toLowerCase();
@@ -57,6 +67,8 @@ function SearchProvider({ children }) {
         setDescriptionProduct,
         ratingProduct,
         setRatingProduct,
+        sortByPrice,
+        setSortByPrice,
       }}
     >
       {children}
