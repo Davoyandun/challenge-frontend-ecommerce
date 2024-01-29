@@ -1,5 +1,8 @@
 import { useState, useEffect, createContext } from "react";
-import { applySortByPrice } from "../../components/utils/intex";
+import {
+  applyFilterCategory,
+  applySortByPrice,
+} from "../../components/utils/intex";
 
 const SearchContext = createContext();
 
@@ -14,9 +17,20 @@ function SearchProvider({ children }) {
   const [descriptionProduct, setDescriptionProduct] = useState("");
   const [ratingProduct, setRatingProduct] = useState(0);
   const [sortByPrice, setSortByPrice] = useState("name");
+  const [categories, setCategories] = useState([]);
+  const [categoriesFilter, setCategoriesFilter] = useState([]);
+  const [originalProducts, setOriginalProducts] = useState([]);
 
   const getData = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
+    const data = await response.json();
+
+    return data;
+  };
+  const getCategories = async () => {
+    const response = await fetch(
+      "https://fakestoreapi.com/products/categories"
+    );
     const data = await response.json();
     return data;
   };
@@ -25,7 +39,10 @@ function SearchProvider({ children }) {
     const fetchData = async () => {
       try {
         const productList = await getData();
+        const categoriesList = await getCategories();
         setProducts(productList);
+        setOriginalProducts(productList);
+        setCategories(categoriesList);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -35,13 +52,21 @@ function SearchProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    if (sortByPrice !== "name") {
-      const sortedProducts = applySortByPrice(products, sortByPrice);
-      setProducts(sortedProducts);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sortByPrice]);
-  console.log(sortByPrice);
+    const productosFilteredByCategory = applyFilterCategory(
+      originalProducts,
+      categoriesFilter
+    );
+
+    const sortedProducts = applySortByPrice(
+      productosFilteredByCategory,
+      sortByPrice
+    );
+
+    setProducts(sortedProducts);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortByPrice, categoriesFilter]);
+
   const searchedProducts = products.filter((product) => {
     const productName = product.title.toLowerCase();
     const searchText = searchValue.toLowerCase();
@@ -51,6 +76,7 @@ function SearchProvider({ children }) {
   return (
     <SearchContext.Provider
       value={{
+        categories,
         searchValue,
         setSearchValue,
         searchedProducts,
@@ -69,6 +95,7 @@ function SearchProvider({ children }) {
         setRatingProduct,
         sortByPrice,
         setSortByPrice,
+        setCategoriesFilter,
       }}
     >
       {children}
