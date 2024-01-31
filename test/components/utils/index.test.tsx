@@ -1,4 +1,5 @@
 import {
+  applyFilterByRating,
   applyFilterCategory,
   applySortByPrice,
 } from "../../../src/components/utils/intex";
@@ -71,5 +72,32 @@ describe("applyFilterCategory", () => {
     const result = applyFilterCategory(products, categoriesFilter);
 
     expect(result).toEqual([]);
+  });
+});
+
+describe("applyFilterByRating", () => {
+  const mockProducts = [
+    { id: 1, name: "Product 1", rating: { rate: 4 } },
+    { id: 2, name: "Product 2", rating: { rate: 3 } },
+    { id: 3, name: "Product 3", rating: { rate: 2 } },
+    { id: 4, name: "Product 4", rating: { rate: 1 } },
+  ];
+
+  it("should filter products by rating correctly", () => {
+    const result1 = applyFilterByRating(mockProducts, 3);
+    expect(result1).toEqual([
+      { id: 1, name: "Product 1", rating: { rate: 4 } },
+      { id: 2, name: "Product 2", rating: { rate: 3 } },
+    ]);
+
+    const result2 = applyFilterByRating(mockProducts, 2);
+    expect(result2).toEqual([
+      { id: 1, name: "Product 1", rating: { rate: 4 } },
+      { id: 2, name: "Product 2", rating: { rate: 3 } },
+      { id: 3, name: "Product 3", rating: { rate: 2 } },
+    ]);
+
+    const result3 = applyFilterByRating(mockProducts, 0);
+    expect(result3).toEqual(mockProducts); 
   });
 });
