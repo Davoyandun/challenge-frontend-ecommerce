@@ -21,3 +21,7 @@ export const applyFilterCategory = (products, categoriesFilter) => {
     return categoriesFilter.includes(productCategory);
   });
 };
+
+export const applyFilterByRating = (products, ratingFilter) => {
+  return products.filter((product) => product.rating.rate >= ratingFilter);
+};

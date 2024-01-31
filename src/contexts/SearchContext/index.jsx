@@ -2,6 +2,7 @@ import { useState, useEffect, createContext } from "react";
 import {
   applyFilterCategory,
   applySortByPrice,
+  applyFilterByRating,
 } from "../../components/utils/intex";
 
 const SearchContext = createContext();
@@ -19,6 +20,7 @@ function SearchProvider({ children }) {
   const [sortByPrice, setSortByPrice] = useState("name");
   const [categories, setCategories] = useState([]);
   const [categoriesFilter, setCategoriesFilter] = useState([]);
+  const [ratingFilter, setRatingFilter] = useState(0);
   const [originalProducts, setOriginalProducts] = useState([]);
 
   const getData = async () => {
@@ -56,16 +58,19 @@ function SearchProvider({ children }) {
       originalProducts,
       categoriesFilter
     );
-
-    const sortedProducts = applySortByPrice(
+    const productsFilteredByRating = applyFilterByRating(
       productosFilteredByCategory,
+      ratingFilter
+    );
+    const sortedProducts = applySortByPrice(
+      productsFilteredByRating,
       sortByPrice
     );
 
     setProducts(sortedProducts);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sortByPrice, categoriesFilter]);
+  }, [sortByPrice, categoriesFilter, ratingFilter]);
 
   const searchedProducts = products.filter((product) => {
     const productName = product.title.toLowerCase();
@@ -96,6 +101,8 @@ function SearchProvider({ children }) {
         sortByPrice,
         setSortByPrice,
         setCategoriesFilter,
+        setRatingFilter,
+        ratingFilter,
       }}
     >
       {children}
