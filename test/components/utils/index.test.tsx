@@ -2,7 +2,7 @@ import {
   applyFilterByRating,
   applyFilterCategory,
   applySortByPrice,
-} from "../../../src/components/utils/intex";
+} from "../../../src/components/utils";
 
 describe("applySortByPrice", () => {
   const sampleProducts = [
@@ -98,6 +98,6 @@ describe("applyFilterByRating", () => {
     ]);
 
     const result3 = applyFilterByRating(mockProducts, 0);
-    expect(result3).toEqual(mockProducts); 
+    expect(result3).toEqual(mockProducts);
   });
 });
