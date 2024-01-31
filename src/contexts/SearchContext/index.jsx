@@ -3,7 +3,7 @@ import {
   applyFilterCategory,
   applySortByPrice,
   applyFilterByRating,
-} from "../../components/utils/intex";
+} from "../../components/utils";
 
 const SearchContext = createContext();
 
