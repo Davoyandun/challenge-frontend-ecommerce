@@ -1,6 +1,25 @@
 .NavbarContainer {
-    display: flex;
-    background: linear-gradient(90deg, rgba(165,13,138,1) 0%, rgba(254,54,99,1) 100%);
-    padding: 15px;
-    justify-content: space-between;
+  display: flex;
+  background: linear-gradient(
+    90deg,
+    rgba(165, 13, 138, 1) 0%,
+    rgba(254, 54, 99, 1) 100%
+  );
+  padding: 15px;
+  justify-content: space-between;
+}
+.CartButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: transparent;
+  border: none;
+  color: white;
+  &:hover {
+    cursor: pointer;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
 }

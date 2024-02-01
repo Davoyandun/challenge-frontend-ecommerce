@@ -17,6 +17,7 @@ function SearchProvider({ children }) {
   const [priceProduct, setPriceProduct] = useState("");
   const [descriptionProduct, setDescriptionProduct] = useState("");
   const [ratingProduct, setRatingProduct] = useState(0);
+  const [idProduct, setIdProduct] = useState(0);
   const [sortByPrice, setSortByPrice] = useState("name");
   const [categories, setCategories] = useState([]);
   const [categoriesFilter, setCategoriesFilter] = useState([]);
@@ -98,6 +99,8 @@ function SearchProvider({ children }) {
         setDescriptionProduct,
         ratingProduct,
         setRatingProduct,
+        idProduct,
+        setIdProduct,
         sortByPrice,
         setSortByPrice,
         setCategoriesFilter,
