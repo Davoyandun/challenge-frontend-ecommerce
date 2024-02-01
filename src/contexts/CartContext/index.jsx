@@ -10,11 +10,15 @@ function CartProvider({ children }) {
     const newCart = [...cart];
     const itemInCart = newCart.find((item) => product.id === item.id);
     if (itemInCart) {
-      itemInCart.quantity++;
+      itemInCart.quantity += product.quantity;
     } else {
-      newCart.push({ ...product, quantity: 1 });
+      newCart.push({ ...product, quantity: product.quantity });
     }
     setCart(newCart);
+  };
+
+  const obtainTotalItems = () => {
+    return cart.reduce((total, item) => total + item.quantity, 0);
   };
 
   const removeFromCart = (product) => {
@@ -40,6 +44,7 @@ function CartProvider({ children }) {
     addToCart,
     removeFromCart,
     clearCart,
+    obtainTotalItems,
   };
 
   return (
