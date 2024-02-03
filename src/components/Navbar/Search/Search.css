@@ -1,18 +1,18 @@
 .SearchContainer {
   width: 100%;
-  max-width: 500px; /* Establece un ancho máximo para pantallas más grandes */
+  max-width: 500px;
   display: flex;
-  background-color: #ffffff; /* Usar códigos de color o nombres en lugar de solo 'white' */
+  background-color: #ffffff;
   border-radius: 15px;
   padding: 10px;
-  align-items: center; /* Alinear elementos verticalmente */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sutil sombra */
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .SearchContainer input {
-  flex: 1; /* Hace que el input ocupe todo el espacio disponible */
+  flex: 1;
   padding: 8px;
-  background-color: transparent; /* Hacer que el fondo del input sea transparente */
+  background-color: transparent;
   border: none;
   border-radius: 5px;
   outline: none;
@@ -20,16 +20,15 @@
 }
 
 .SearchContainer input::placeholder {
-  color: #999; /* Color del texto de marcador de posición */
+  color: #999;
 }
 
 .SearchContainer img {
   height: 20px;
-  margin-left: 10px; /* Añadir un espacio entre el input y la imagen */
+  margin-left: 10px;
 }
 
-/* Añadir reglas para mejorar la apariencia del input en estado de enfoque */
 .SearchContainer input:focus {
-  border: 2px solid #3498db; /* Cambiar el color del borde cuando el input está enfocado */
-  box-shadow: 0 0 6px rgba(52, 152, 219, 0.5); /* Sutil sombra cuando está enfocado */
+  border: 2px solid #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.5);
 }

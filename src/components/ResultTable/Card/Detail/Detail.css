@@ -11,8 +11,6 @@
   flex-direction: column;
   justify-content: space-between;
   height: 175px;
-  /* jusatificar el testto */
   text-align: justify;
-  /* no quiero q este todo apegado alas orillas; */
   padding: 10px;
 }
