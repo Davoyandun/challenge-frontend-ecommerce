@@ -108,15 +108,16 @@
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s;
-  /* add hover effect */
+
 
   &:hover {
     background-color: #4bb34b;
   }
+  &:disabled {
+    pointer-events: none;
+    background-color: #f0f0f0;
+    color: #8b8b8b;
+    cursor: not-allowed;
+  }
 }
-.ContentModalContainer .ButtonCartHeaderModalContainer button:disabled {
-  pointer-events: none;
-  background-color: #f0f0f0;
-  color: #8b8b8b;
-  cursor: not-allowed;
-}
+
