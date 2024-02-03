@@ -10,7 +10,7 @@ function CartProvider({ children }) {
     const newCart = [...cart];
     const itemInCart = newCart.find((item) => product.id === item.id);
     if (itemInCart) {
-      itemInCart.quantity += product.quantity;
+      itemInCart.quantity = product.quantity;
     } else {
       newCart.push({ ...product, quantity: product.quantity });
     }
@@ -46,7 +46,6 @@ function CartProvider({ children }) {
     clearCart,
     obtainTotalItems,
   };
-
   return (
     <CartContext.Provider value={contextValues}>
       {children}

@@ -15,7 +15,7 @@ function Modal() {
     descriptionProduct,
     idProduct,
   } = useContext(SearchContext);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, setIsOpen: setIsOpenCart } = useContext(CartContext);
   const [quantity, setQuantity] = useState(0);
   const [buttonInfo, setButtonInfo] = useState("Add");
 
@@ -44,6 +44,7 @@ function Modal() {
       setButtonInfo("Add");
       setQuantity(0);
     }, 3000);
+    setIsOpenCart(true);
   };
 
   return (

@@ -6,13 +6,13 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 function Navbar() {
-  const { obtainTotalItems } = useContext(CartContext);
+  const { obtainTotalItems, setIsOpen } = useContext(CartContext);
 
   return (
     <div className="NavbarContainer">
       <Logo />
       <Search />
-      <button className="CartButton">
+      <button className="CartButton" onClick={() => setIsOpen((prev) => !prev)}>
         <CartLogo />
         <p>{obtainTotalItems() > 0 ? obtainTotalItems() : ""}</p>
       </button>

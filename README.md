@@ -65,6 +65,6 @@ Keep in mind that there are various types of lind warnings. We advice to solve e
 
 It is important to complete this task in order to complete the following tasks:
 - Include the “Add to cart” function for each product.
-- Include the “Remove from cart” funcion each product added to the cart.
+- Include the “Remove from cart” function each product added to the cart.
 
 For both tasks you can use the UseContext hook.

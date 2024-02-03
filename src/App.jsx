@@ -1,4 +1,5 @@
 import "./App.css";
+import { Cart } from "./components/Cart";
 import { Filter } from "./components/Filter";
 import { Navbar } from "./components/Navbar";
 import { ResultInfoBar } from "./components/ResultInfoBar";
@@ -11,10 +12,12 @@ function App() {
     <SearchProvider>
       <CartProvider>
         <Navbar />
+
         <ResultInfoBar />
-        <div className="content-ResultandFilter">
+        <div className="MainContent">
           <Filter />
           <ResultTable />
+          <Cart />
         </div>
       </CartProvider>
     </SearchProvider>
