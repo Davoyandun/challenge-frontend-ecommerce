@@ -9,9 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "jest --watch",
-    "test:ci": "jest --ci --coverage",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "test:ci": "jest --ci --coverage"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -48,7 +46,6 @@
     "jest-svg-transformer": "^1.0.0",
     "prop-types": "^15.8.1",
     "react-test-renderer": "^18.2.0",
-    "storybook": "^7.6.10",
     "vite": "^4.4.5"
   },
   "jest": {
